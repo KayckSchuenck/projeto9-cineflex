@@ -1,15 +1,19 @@
-import { func } from 'prop-types';
+//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
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter,Routes,Route } from 'react-router-dom'
-import './public/reset.css'
-import './style.css'
+import './assets/reset.css'
+import './assets/style.css'
+import Tela1 from './tela1';
 
-function App(){
-    
-}
+
+
+function App() {
+  return (
+    <Tela1 />
+  )}
+
 
 ReactDOM.render(
     <App />, document.querySelector('.root')
   );
-  
