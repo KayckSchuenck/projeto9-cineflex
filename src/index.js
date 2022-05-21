@@ -1,16 +1,23 @@
-//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
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter,Routes,Route } from 'react-router-dom'
 import './assets/reset.css'
 import './assets/style.css'
+import Header from './header';
 import Tela1 from './tela1';
-
-
+import Tela2 from './tela2';
+import Tela3 from './tela3';
 
 function App() {
   return (
-    <Tela1 />
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Tela1 />} />
+        <Route path="/sessoes/:idFilme" element={<Tela2 />} />
+        <Route path="/sessao/:idLugares" element={<Tela3 />} />
+      </Routes>
+    </BrowserRouter>
   )}
 
 

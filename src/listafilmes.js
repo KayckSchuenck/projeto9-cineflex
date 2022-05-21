@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 
 export default function ListaFilmes(){
     const [filmes, setFilmes] = useState([]);
@@ -10,20 +10,13 @@ export default function ListaFilmes(){
             setFilmes(response.data)
         })
     }, [])
-
     return(
-        <Filme>
+        <>
             {filmes.map(element =>
+            <Link to={`/sessoes/${element.id}`}>
                 <img src={element.posterURL}/>
+            </Link>
             )}
-        </Filme>
+        </>
     )
 }
-
-const Filme=styled.div`
-img{
-    border: 8px solid #ffffff;
-    border-radius: 3px;
-    margin:20px 30px 0 0;
-    box-shadow: 0px 2px 4px 2px #0000001A;
-}`

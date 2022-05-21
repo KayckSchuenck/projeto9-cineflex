@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from './header.js'
 import ListaFilmes from './listafilmes.js';
 
 export default function Tela1(){
     return(
     <>
-        <Header />
         <div className='separador'>Selecione o filme</div>
         <Filmes>
             <ListaFilmes/>
@@ -24,6 +22,10 @@ width: 100%;
 img{
     width: 130px;
     height: 192px;
+    border: 8px solid #ffffff;
+    border-radius: 3px;
+    margin:20px 30px 0 0;
+    box-shadow: 0px 2px 4px 2px #0000001A;
 }
 `
 
