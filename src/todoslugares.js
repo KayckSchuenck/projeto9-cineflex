@@ -1,11 +1,26 @@
 import styled from 'styled-components';
+
 export default function TodosLugares(props){
+    function selecionar(lugar,index){
+        if (!lugar.isAvailable) return
+        props.setLugares((lugares)=>{
+            lugares.seats[index].escolhido=!lugar.escolhido;
+            return lugares
+            })
+        if(lugar.escolhido){
+            props.setIds(props.ids.filter(elemento=>elemento!==lugar.id))
+        }
+        else {
+            props.setIds([...props.ids,lugar.id])
+        }
+    }
+
     return (
         <>
             <Assentos>
-                {props.lugares.seats.map((elemento)=>{
+                {props.lugares.seats.map((elemento,index)=>{
                     return (
-                        <Assento disponibilidade={elemento.isAvailable}>
+                        <Assento disponibilidade={elemento.isAvailable} escolhido={elemento.escolhido} onClick={()=>selecionar(elemento,index)}>
                              {elemento.name}
                         </Assento>
                     )}
@@ -35,7 +50,7 @@ display: flex;
 align-items: center;
 flex-wrap: wrap;
 margin: 0 24px;
-:nth-child(4){
+:nth-child(5){
 justify-content: space-between;
 }
 `
@@ -45,20 +60,22 @@ border-radius: 50%;
 width: 26px;
 height: 26px;
 background-color: ${props=>{
-    if(props.disponibilidade==="check"){
-        return "#8DD7CF"
-    }
-    if(props.disponibilidade===true){
-        return "#C3CFD9"
-    } if(props.disponibilidade===false){
-        return "#FBE192"
-    }
+    if(props.escolhido) return "#8DD7CF"
+    if(props.disponibilidade) return "#C3CFD9"
+    if(!props.disponibilidade) return "#FBE192"
     }};
+
 display:flex;
 align-items: center;
 justify-content: center;
 margin: 18px 8px 0 0;
-border: 1px solid ${props=>props.disponibilidade ? "#7B8B99" : "#F7C52B" };
+border: 1px solid ${props=>{
+    if(props.escolhido) return "#1AAE9E"
+    if(props.disponibilidade) return "#7B8B99"
+    if(!props.disponibilidade) return "#F7C52B"
+    }};
+    
+cursor: ${props=>props.disponibilidade ? "pointer" : "auto"};
 `
 
 const Bloco=styled.div`

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
-
+import loading from './assets/Spinner-2s-200px.svg'
 export default function Tela2(){
     const {idFilme}=useParams()
     const [sessoes, setSessoes]= useState("");
@@ -13,8 +13,9 @@ export default function Tela2(){
         })
     },[])
 
-  if(sessoes==="") return (<div className='separador'>Loading</div>)
-  else{ return(
+  if(sessoes==="") return (<div className='separador'><img src={loading}/></div>)
+  else { 
+      return(
         <>
         <div className='separador'>Selecione o filme</div>
        {sessoes.days.map(({weekday,date},index)=>
@@ -22,22 +23,21 @@ export default function Tela2(){
                {weekday} - {date} <br/>
                <Flex>
                     {sessoes.days[index].showtimes.map((e)=>
-                        <Link to={`/sessao/${e.id}`} style={{ textDecoration: 'none' }}>
-                            
-                                <Horario>
-                                {e.name}
-                                </Horario>
-                            
+                        <Link to={`/sessao/${e.id}`}>
+                            <Horario>
+                            {e.name}
+                            </Horario>
                         </Link>
                     )}
                 </Flex>
             </Dia>
         )}
+
         <footer>
             <img src={sessoes.posterURL} /> {sessoes.title}
         </footer>
         </>
-        )
+      )
   }
 }
 
@@ -63,4 +63,7 @@ border-radius: 3px;
 `
 const Flex=styled.div`
 display: flex;
+a{
+    text-decoration: none;
+}
 `
