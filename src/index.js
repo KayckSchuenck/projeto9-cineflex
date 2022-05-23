@@ -10,12 +10,13 @@ import Tela3 from './tela3';
 import Tela4 from './tela4';
 
 function App() {
+  const[display,setDisplay]=React.useState(true)
   return (
     <BrowserRouter>
-      <Header />
+      <Header display={display}/>
       <Routes>
-        <Route path="/" element={<Tela1 />} />
-        <Route path="/sessoes/:idFilme" element={<Tela2 />} />
+        <Route path="/" element={<Tela1  set={setDisplay} />} />
+        <Route path="/sessoes/:idFilme" element={<Tela2 set={setDisplay}/>} />
         <Route path="/sessao/:idLugares" element={<Tela3 />} />
         <Route path="/sucesso" element={<Tela4 />}/>
       </Routes>

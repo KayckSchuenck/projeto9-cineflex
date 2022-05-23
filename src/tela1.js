@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import ListaFilmes from './listafilmes.js';
 
-export default function Tela1(){
+export default function Tela1(props){
+    props.set(false)
     return(
     <>
         <div className='separador'>Selecione o filme</div>

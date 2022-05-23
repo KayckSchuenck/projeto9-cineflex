@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import loading from './assets/Spinner-2s-200px.svg'
-export default function Tela2(){
+
+export default function Tela2(props){
+    props.set(true)
     const {idFilme}=useParams()
     const [sessoes, setSessoes]= useState("");
     useEffect(()=>{

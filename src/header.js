@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import setinha from './assets/arrow-back-outline.svg'
 
-export default function Header(){
-    let navigate = useNavigate()
+export default function Header(props){
+
+    const navigate = useNavigate()
     return (
         <>
-        <Voltar>
+        <Voltar display={props.display}>
             <img src={setinha} onClick={()=>navigate(-1)}/>
         </Voltar>
         <Topo>
@@ -33,9 +34,10 @@ justify-content:center;
 `
 const Voltar=styled.button`
 position: fixed;
-top: 11px;
+top: 12px;
 left: 0;
 z-index: 1;
+display: ${props=>(props.display ? "inherit" : "none")};
 img {
     height: 40px;
     width: 30px;
