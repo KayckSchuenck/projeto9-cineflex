@@ -17,7 +17,7 @@ export default function Tela2(){
   else { 
       return(
         <>
-        <div className='separador'>Selecione o filme</div>
+        <div className='separador'>Selecione o horário</div>
        {sessoes.days.map(({weekday,date},index)=>
             <Dia key={index}>
                {weekday} - {date} <br/>
@@ -32,7 +32,7 @@ export default function Tela2(){
                 </Flex>
             </Dia>
         )}
-
+        <Margem></Margem>
         <footer>
             <img src={sessoes.posterURL} /> {sessoes.title}
         </footer>
@@ -66,4 +66,7 @@ display: flex;
 a{
     text-decoration: none;
 }
+`
+const Margem=styled.div`
+margin-bottom: 136px;
 `

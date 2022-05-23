@@ -83,7 +83,7 @@ input{
 }
 button{
     align-self: center;
-    margin: 50px 0 20px;
+    margin: 50px 0 30px;
     border-radius: 3px;
     background-color: #E8833A;
     color: white;
